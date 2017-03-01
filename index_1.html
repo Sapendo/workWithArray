@@ -34,44 +34,53 @@
             return tmp;
         }
         
-        function UniqueNum (arr) {
+        function UniqueNum (testArr) {
 //  ВАРИАНТ РЕШЕНИЯ №1;
-            var arrUniqueNum = [];
-            for (var i = 0, k=0; i<arr.length;i++) {
-                for (var j = 0; j<arr.length+1; j++) {
-                    if (i==j) {
-                        continue;
-                    }
-                    if (arr[i]==arr[j]) {
-                        break;
-                    }
-                    
-                    if (j==arr.length) {
-                        arrUniqueNum[k]=arr[i];
-                        k++;
-                    }
-                }
-            }
-            return arrUniqueNum;
+//            var arrUniqueNum = [];
+//            for (var i = 0, k=0; i<arr.length;i++) {
+//                for (var j = 0; j<arr.length+1; j++) {
+//                    if (i==j) {
+//                        continue;
+//                    }
+//                    if (arr[i]==arr[j]) {
+//                        break;
+//                    }
+//                    
+//                    if (j==arr.length) {
+//                        arrUniqueNum[k]=arr[i];
+//                        k++;
+//                    }
+//                }
+//            }
+//            return arrUniqueNum;
             
 //  ВАРИАНТ РЕШЕНИЯ №2;
 //            var arrUniqueNum = [];
 //            var flag;
-//            for (var i = 0, k=0; i<arr.length;i++) {
+//            for (var i = 0; i<arr.length;i++) {
 //                flag = false;
-//                for (var j = i+1; j<arr.length+1; j++) {
+//                for (var j = i+1; j<arr.length; j++) {
 //                    if (arr[i]==arr[j]) {
 //                        arr.splice(j,1);
 //                        j--;
 //                        flag = true;
 //                    }
-//                    if (flag==true && j==arr.length) {
+//                    if (flag==true && j==arr.length-1) {
 //                        arr.splice(i,1);
-//                        i--;
+//						i--;
 //                    }
 //                }
 //            }
 //            return arr;
+			
+			
+//  ВАРИАНТ РЕШЕНИЯ №3;
+           var unArr = [];
+            for (var i = 0, j = 0, t; i < testArr.length+1; i++) {
+                if (testArr[i-1] === testArr[i]) t = testArr[i-1];
+                else if (testArr[i-1] != t) unArr[j++] = testArr[i-1];
+            }
+            return unArr;
         }
 
         var arr = randomArr(20, -50, 50);
@@ -85,9 +94,9 @@
         }
         document.write("Это все отрицательные нечетные числа из массива: " + arrSort +"<br/> <br/>");
 
-        document.write("Это максимальное число из мвссива: " + max(arr) + "<br/> <br/>");
+        document.write("Это максимальное число из массива: " + max(arr) + "<br/> <br/>");
         
-        document.write("Это уникальные числа из мвссива: " + UniqueNum(arr));
+        document.write("Это уникальные числа из массива: " + UniqueNum(arr));
     </script>
 </body>
 
